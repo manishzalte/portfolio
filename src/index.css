@@ -1,13 +1,598 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #333333 50%, #1a1a1a 75%, #000000 100%);
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #FF0000;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #CC0000;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer components {
+  .btn-spiderman {
+    @apply bg-gradient-to-r from-spiderman-red to-spiderman-red-dark text-white font-bold py-3 px-6 rounded-lg 
+           transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-spiderman-red/50
+           active:scale-95 border-2 border-spiderman-red/30 animate-spider-glow;
+  }
+  
+  .btn-spiderman-secondary {
+    @apply bg-transparent border-2 border-spiderman-red text-spiderman-red font-bold py-3 px-6 rounded-lg 
+           transform transition-all duration-300 hover:scale-105 hover:bg-spiderman-red/10 hover:shadow-lg hover:shadow-spiderman-red/30
+           active:scale-95;
+  }
+
+  .btn-electric {
+    @apply bg-gradient-to-r from-spiderman-blue to-spiderman-blue-dark text-white font-bold py-3 px-6 rounded-lg 
+           transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-spiderman-blue/50
+           active:scale-95 border-2 border-spiderman-blue/30;
+  }
+
+  .btn-venom {
+    @apply bg-gradient-to-r from-spiderman-purple to-spiderman-purple-dark text-white font-bold py-3 px-6 rounded-lg 
+           transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-spiderman-purple/50
+           active:scale-95 border-2 border-spiderman-purple/30;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow-xl;
+  }
+  
+  .glass-card {
+    @apply bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 
+           rounded-xl shadow-2xl hover:shadow-spiderman-red/20 transition-all duration-300;
+  }
+
+  .spiderman-card {
+    @apply bg-gradient-to-br from-spiderman-black-dark/80 to-spiderman-black-light/60 backdrop-blur-md 
+           border border-spiderman-red/30 rounded-xl shadow-2xl hover:shadow-spiderman-red/30 
+           transition-all duration-300 hover:scale-105;
+  }
+
+  .electric-card {
+    @apply bg-gradient-to-br from-spiderman-blue/20 to-spiderman-blue-dark/10 backdrop-blur-md 
+           border border-spiderman-blue/30 rounded-xl shadow-2xl hover:shadow-spiderman-blue/30 
+           transition-all duration-300 hover:scale-105;
+  }
+
+  .venom-card {
+    @apply bg-gradient-to-br from-spiderman-purple/20 to-spiderman-purple-dark/10 backdrop-blur-md 
+           border border-spiderman-purple/30 rounded-xl shadow-2xl hover:shadow-spiderman-purple/30 
+           transition-all duration-300 hover:scale-105;
+  }
+  
+  .spiderman-glow {
+    @apply animate-spider-glow;
+  }
+  
+  .spider-float {
+    @apply animate-spider-float;
+  }
+
+  .spider-swing {
+    @apply animate-spider-swing;
+  }
+
+  .spider-web {
+    @apply animate-spider-web;
+  }
+
+  .spider-bounce {
+    @apply animate-spider-bounce;
+  }
+
+  .spider-pulse {
+    @apply animate-spider-pulse;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .spiderman-text-glow {
+    text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000;
+  }
+
+  .electric-text-glow {
+    text-shadow: 0 0 10px #0066CC, 0 0 20px #0066CC, 0 0 30px #0066CC;
+  }
+
+  .venom-text-glow {
+    text-shadow: 0 0 10px #6600CC, 0 0 20px #6600CC, 0 0 30px #6600CC;
+  }
+
+  .spiderman-border-glow {
+    box-shadow: 0 0 10px #FF0000, inset 0 0 10px rgba(255, 0, 0, 0.1);
+  }
+
+  .electric-border-glow {
+    box-shadow: 0 0 10px #0066CC, inset 0 0 10px rgba(0, 102, 204, 0.1);
+  }
+
+  .venom-border-glow {
+    box-shadow: 0 0 10px #6600CC, inset 0 0 10px rgba(102, 0, 204, 0.1);
+  }
+
+  .spiderman-shimmer {
+    @apply animate-spider-pulse bg-gradient-to-r from-transparent via-spiderman-red/10 to-transparent bg-[length:200%_100%];
+  }
+
+  .electric-shimmer {
+    @apply animate-spider-pulse bg-gradient-to-r from-transparent via-spiderman-blue/10 to-transparent bg-[length:200%_100%];
+  }
+
+  .venom-shimmer {
+    @apply animate-spider-pulse bg-gradient-to-r from-transparent via-spiderman-purple/10 to-transparent bg-[length:200%_100%];
+  }
+}
+
+/* Python-Themed Logo with Spider-Man Colors */
+.python-logo {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #FF0000 0%, #CC0000 50%, #FF0000 100%);
+  border-radius: 50%;
+  animation: spider-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-weight: bold;
+  font-size: 24px;
+  color: #000000;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.python-logo::before {
+  content: '🐍';
+  font-size: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.8));
+}
+
+.python-logo::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 50%, transparent 100%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Alternative Python Logo - More Subtle */
+.python-logo-subtle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #FF0000 0%, #CC0000 50%, #FF0000 100%);
+  border-radius: 50%;
+  animation: spider-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-weight: bold;
+  font-size: 28px;
+  color: #000000;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.python-logo-subtle::before {
+  content: 'Py';
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.python-logo-subtle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Spider-Man Symbol (Original) */
+.spiderman-symbol {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: #FF0000;
+  border-radius: 50%;
+  animation: spider-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.spiderman-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 25%, 75% 50%, 100% 75%, 50% 100%, 0% 75%, 25% 50%, 0% 25%);
+}
+
+/* Electric Spider Symbol */
+.electric-symbol {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: #0066CC;
+  border-radius: 50%;
+  animation: spider-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(0, 102, 204, 0.5);
+}
+
+.electric-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 25%, 75% 50%, 100% 75%, 50% 100%, 0% 75%, 25% 50%, 0% 25%);
+}
+
+/* Venom Spider Symbol */
+.venom-symbol {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  background: #6600CC;
+  border-radius: 50%;
+  animation: spider-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(102, 0, 204, 0.5);
+}
+
+.venom-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #000000;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 25%, 75% 50%, 100% 75%, 50% 100%, 0% 75%, 25% 50%, 0% 25%);
+}
+
+/* Floating Spider Elements */
+.floating-spider {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #FF0000;
+  border-radius: 50%;
+  animation: spider-float 4s ease-in-out infinite;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.floating-spider:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+.floating-spider:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+.floating-spider:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+.floating-spider:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+
+/* Web Effect */
+.web-effect {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: spider-web 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Spider Web Background */
+.spider-web-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 102, 204, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(102, 0, 204, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Spider-Man Swing Button */
+.spiderman-swing-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #1a1a1a, #333333);
+  border: 2px solid #FF0000;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1000;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+  animation: spider-swing 3s ease-in-out infinite;
+}
+
+/* Hide on mobile devices */
+@media (max-width: 768px) {
+  .spiderman-swing-button {
+    display: none !important;
+  }
+}
+
+.spiderman-swing-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+}
+
+.spiderman-swing-button:active {
+  transform: scale(0.95);
+}
+
+/* Spider Symbol in Button */
+.spiderman-swing-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: #FF0000;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.spiderman-swing-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: #000000;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 25%, 75% 50%, 100% 75%, 50% 100%, 0% 75%, 25% 50%, 0% 25%);
+}
+
+/* Spider Web Scroll Indicator */
+.spider-web-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 1/2;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.spider-web-symbol {
+  width: 20px;
+  height: 20px;
+  background: #FF0000;
+  border-radius: 50%;
+  animation: spider-bounce 2s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.spider-web-symbol::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #000000;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 25%, 75% 50%, 100% 75%, 50% 100%, 0% 75%, 25% 50%, 0% 25%);
+}
+
+/* 3D Card Effects */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+}
+
+/* Skill Progress Bars */
+.skill-progress {
+  @apply w-full bg-gray-800 rounded-full h-3 overflow-hidden transition-all duration-300;
+}
+
+.skill-progress:hover {
+  @apply h-4 shadow-lg;
+}
+
+.skill-progress-red {
+  @apply h-full bg-gradient-to-r from-spiderman-red to-spiderman-red-dark rounded-full transition-all duration-300;
+}
+
+.skill-progress-red:hover {
+  @apply shadow-lg shadow-spiderman-red/50;
+}
+
+.skill-progress-blue {
+  @apply h-full bg-gradient-to-r from-spiderman-blue to-spiderman-blue-dark rounded-full transition-all duration-300;
+}
+
+.skill-progress-blue:hover {
+  @apply shadow-lg shadow-spiderman-blue/50;
+}
+
+.skill-progress-purple {
+  @apply h-full bg-gradient-to-r from-spiderman-purple to-spiderman-purple-dark rounded-full transition-all duration-300;
+}
+
+.skill-progress-purple:hover {
+  @apply shadow-lg shadow-spiderman-purple/50;
+}
+
+/* Custom Animations */
+@keyframes spider-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spider-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes spider-swing {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) rotate(-5deg);
+  }
+}
+
+@keyframes spider-web {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spider-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Music Player Styles */
+.slider-spiderman::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #FF0000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.slider-spiderman::-webkit-slider-thumb:hover {
+  background: #CC0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  transform: scale(1.2);
+}
+
+.slider-spiderman::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #FF0000;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.slider-spiderman::-moz-range-thumb:hover {
+  background: #CC0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+  transform: scale(1.2);
+}
+
+/* Music Player Animations */
+@keyframes music-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.music-player-pulse {
+  animation: music-pulse 2s ease-in-out infinite;
 }
